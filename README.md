@@ -30,14 +30,14 @@ The data which is used to populate the Bean may have a different name than what 
 
 ## json:type
 The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
-| Name      | Examples                                                          |
-| --------- | ----------------------------------------------------------------- |
-| `string`  | "example", "no", "true", "12345"                                  |
-| `boolean` | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false" |
-| `number`  | 3.1415, "3.1215", 3, 3.1                                          |
-| `date`    | "2017-04-26T10:36:00Z"                                            |
-| `array`   | [], [{}, {}]                                                      |
-| `struct`  | {}                                                                |
+Name      | Examples                                                          |
+--------- | ----------------------------------------------------------------- |
+`string`  | "example", "no", "true", "12345"                                  |
+`boolean` | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false" |
+`number`  | 3.1415, "3.1215", 3, 3.1                                          |
+`date`    | "2017-04-26T10:36:00Z"                                            |
+`array`   | [], [{}, {}]                                                      |
+`struct`  | {}                                                                |
 
 
 ## json:serializable
