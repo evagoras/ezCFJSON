@@ -37,8 +37,8 @@ Name | Java Cast | Examples
 `boolean` | `boolean` | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false"
 `number` | `bigdecimal` | 3.1415, "3.1215", 3, 3.1
 `date` | `string` | "2017-04-26T10:36:00Z"
-`array` | cfc one-to-many | [], [{}, {}]
-`struct` | cfc one-to-one | {}
+`array` | CFC one-to-many | [], [{}, {}]
+`struct` | CFC one-to-one | {}
 
 
 ## json:serializable
