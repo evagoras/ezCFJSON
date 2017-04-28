@@ -1,5 +1,5 @@
 # ezCFJSON
-A base component for *safely* (de)serializing from/to JSON and native CF objects.
+A base component for **safely** (de)serializing from/to JSON and native CF objects.
 
 ## How to use
 1. create a CFC that extends this base
