@@ -259,7 +259,8 @@ component {
 	private struct function serializeSimpleProperties
 	( required boolean everything )
 	{
-		var out = createObject( "java", "java.util.LinkedHashMap").init();
+		// var out = createObject( "java", "java.util.LinkedHashMap").init();
+		var out = {};
 		var properties = variables.categorizedProperties[ "simple" ];
 		for ( var fieldName in properties )
 		{
@@ -344,7 +345,8 @@ component {
 	private any function serializeOneToOneProperties
 	( required boolean everything )
 	{
-		var out = createObject( "java", "java.util.LinkedHashMap").init();
+		// var out = createObject( "java", "java.util.LinkedHashMap").init();
+		var out = {};
 		var properties = variables.categorizedProperties[ "struct" ];
 		// var properties = returnPropertiesByType( "struct" );
 		for ( var property in properties )
@@ -383,7 +385,8 @@ component {
 	private any function serializeOneToManyProperties
 	( required boolean everything )
 	{
-		var out = createObject( "java", "java.util.LinkedHashMap").init();
+		// var out = createObject( "java", "java.util.LinkedHashMap").init();
+		var out = {};
 		var properties = variables.categorizedProperties[ "array" ];
 		// var properties = returnPropertiesByType( "array" );
 		for ( var property in properties )
