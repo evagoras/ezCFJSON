@@ -34,7 +34,7 @@ property name="items" json:type="array" json:cfc="beans.basket.item";
 
 ## json:type
 Name | Examples
------------- | -------------
+---- | --------
 string | "example"
 boolean | true/false
 number | 3.1415
@@ -42,10 +42,8 @@ date | "2017-04-26T10:36:00Z"
 array | []
 struct | {}
 
-
 ## json:serializable
-true/false
-
+true/false<br>
 This is a boolean flag to indicate whether to output the key or not
 
 ## json:cfc
