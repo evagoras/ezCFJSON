@@ -31,7 +31,7 @@ The data which is used to populate the Bean may have a different name than what 
 ## json:type
 The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
 
-Name | Examples
+Name | :Examples
 ---- | --------
 `string` | "example", "no", "true", "12345"
 `boolean` | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false"
