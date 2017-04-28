@@ -26,7 +26,8 @@ component extends="beans.base" accessors=true {
 ```
 
 ## json:column
-The data which is used to populate the Bean may have a different name than what you need to get out. For example, your JSON needs to respond with `firstName`, while your query column is `strFirstName`.
+The data which is used to populate the Bean may have a different key name going in than what you need coming out. For example, your JSON may need to respond with `firstName`, while your query column populating the Bean is called `strFirstName`. You would then create a property like this:
+```property name="firstName" json:column="strFirstName";```
 
 ## json:type
 The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
@@ -42,7 +43,7 @@ Name | JavaCast | Examples
 
 
 ## json:serializable
-`true` or `false`<br>
+`true` or `false`. The default is `true`.<br>
 This is a boolean flag to indicate whether to output the key or not.
 
 ## json:cfc
