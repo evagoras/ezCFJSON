@@ -69,8 +69,8 @@ component {
 	( required boolean everything )
 	{
 		var s = serializeSimpleProperties( everything = arguments.everything );
-		s.append( serializeOneToOneProperties( everything = arguments.everything ) );
-		s.append( serializeOneToManyProperties( everything = arguments.everything ) );
+		s.putAll( serializeOneToOneProperties( everything = arguments.everything ) );
+		s.putAll( serializeOneToManyProperties( everything = arguments.everything ) );
 		return s;
 	}
 
@@ -259,8 +259,7 @@ component {
 	private struct function serializeSimpleProperties
 	( required boolean everything )
 	{
-		// var out = createObject( "java", "java.util.LinkedHashMap").init();
-		var out = {};
+		var out = createObject( "java", "java.util.LinkedHashMap").init();
 		var properties = variables.categorizedProperties[ "simple" ];
 		for ( var fieldName in properties )
 		{
@@ -345,8 +344,7 @@ component {
 	private any function serializeOneToOneProperties
 	( required boolean everything )
 	{
-		// var out = createObject( "java", "java.util.LinkedHashMap").init();
-		var out = {};
+		var out = createObject( "java", "java.util.LinkedHashMap").init();
 		var properties = variables.categorizedProperties[ "struct" ];
 		// var properties = returnPropertiesByType( "struct" );
 		for ( var property in properties )
@@ -385,8 +383,7 @@ component {
 	private any function serializeOneToManyProperties
 	( required boolean everything )
 	{
-		// var out = createObject( "java", "java.util.LinkedHashMap").init();
-		var out = {};
+		var out = createObject( "java", "java.util.LinkedHashMap").init();
 		var properties = variables.categorizedProperties[ "array" ];
 		// var properties = returnPropertiesByType( "array" );
 		for ( var property in properties )
