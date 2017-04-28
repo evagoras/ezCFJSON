@@ -33,12 +33,15 @@ property name="items" json:type="array" json:cfc="beans.basket.item";
 ```
 
 ## json:type
-1. `string`   "example"
-1. `boolean`  true/false
-1. `number`   3.1415
-1. `date`     "2017-04-26T10:36:00Z"
-1. `struct`   {}
-1. `array`    []
+Name | Examples
+------------ | -------------
+string | "example"
+boolean | true/false
+number | 3.1415
+date | "2017-04-26T10:36:00Z"
+array | []
+struct | {}
+
 
 ## json:serializable
 true/false
