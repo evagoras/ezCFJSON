@@ -29,14 +29,15 @@ component extends="beans.base" accessors=true {
 The data which is used to populate the Bean may have a different name than what you need to get out. For example, your JSON needs to respond with `firstName`, while your query column is `strFirstName`.
 
 ## json:type
-Name | Examples
----- | --------
-string | "example", "no", "true", "12345"
-boolean | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false"
-number | 3.1415, "3.1215", 3, 3.1
-date | "2017-04-26T10:36:00Z"
-array | [], [{}, {}]
-struct | {}
+The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
+Name | Java Cast | Examples
+---- | --------- | --------
+string | string | "example", "no", "true", "12345"
+boolean | boolean | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false"
+number | bigdecimal | 3.1415, "3.1215", 3, 3.1
+date | string | "2017-04-26T10:36:00Z"
+array | -- | [], [{}, {}]
+struct | -- | {}
 
 ## json:serializable
 `true` or `false`<br>
