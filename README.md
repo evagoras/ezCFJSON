@@ -43,7 +43,7 @@ Name | JavaCast | Examples
 
 ## json:serializable
 `true` or `false`<br>
-This is a boolean flag to indicate whether to output the key or not
+This is a boolean flag to indicate whether to output the key or not.
 
 ## json:cfc
-The CFC location of the Bean to map as either a one-to-one(struct) or one-to-many(array)
+The CFC location of the Bean to map as either a one-to-one (`struct`) or one-to-many (`array`).
