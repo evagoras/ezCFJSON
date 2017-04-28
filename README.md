@@ -5,20 +5,20 @@ A base component for (de)serializing from/to JSON and native CF objects
 1) create a CFC that extends this base
 2) add 3 types of properties: simple, structs or arrays
 ```
-	component extends="beans.base" accessors=true {
+component extends="beans.base" accessors=true {
 
-		property name="defaultLanguage";
-		property name="distributorID" json:type="number" json:column="distributorCode";
-		property name="active" json:type="boolean";
-		property name="shippingAddress" json:type="struct" json:cfc="beans.basket.address";
-		property name="items" json:type="array" json:cfc="beans.basket.item";
+	property name="defaultLanguage";
+	property name="distributorID" json:type="number" json:column="distributorCode";
+	property name="active" json:type="boolean";
+	property name="shippingAddress" json:type="struct" json:cfc="beans.basket.address";
+	property name="items" json:type="array" json:cfc="beans.basket.item";
 
-		function init() {
-			super.init();
-			return this;
-		}
-
+	function init() {
+		super.init();
+		return this;
 	}
+
+}
 ```
 
 ## Property examples:
