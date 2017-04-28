@@ -90,4 +90,33 @@ json = '{
         }
     ]
 }';
+
+jsonminimum = '{
+    "billingAddress": {
+        "telephone": "12345",
+        "organisation": "my company",
+        "address1": "Street 1"
+    },
+    "shippingAddress": {
+        "address2": "Street 2",
+        "city": "London"
+    },
+    "distributorID": 12345,
+    "items": [
+        {
+            "id": 1,
+            "quantity": 3,
+            "unitCost": 4.56
+        },
+        {
+            "size": 4,
+            "id": 2,
+            "unitCost": 10
+        }
+    ],
+    "ID": 233,
+    "firstName": "Evagoras",
+    "active": true,
+    "familyName": "Charalambous"
+}';
 </cfscript>
