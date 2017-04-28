@@ -25,12 +25,8 @@ component extends="beans.base" accessors=true {
 }
 ```
 
-## Property examples:
-```
-property name="firstName" json:type="string" json:column="FNAME" json:serializable=false;
-property name="shippingAddress" json:type="struct" json:cfc="beans.basket.address";
-property name="items" json:type="array" json:cfc="beans.basket.item";
-```
+## json:column
+The data which is used to populate the Bean may have a different name than what you need to get out. For example, your JSON needs to respond with `firstName`, while your query column is `strFirstName`.
 
 ## json:type
 Name | Examples
@@ -43,7 +39,7 @@ array | []
 struct | {}
 
 ## json:serializable
-true/false<br>
+`true` or `false`<br>
 This is a boolean flag to indicate whether to output the key or not
 
 ## json:cfc
