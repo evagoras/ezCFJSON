@@ -2,8 +2,8 @@
 A base component for (de)serializing from/to JSON and native CF objects
 
 ## How to use
-1) create a CFC that extends this base
-2) add 3 types of properties: simple, structs or arrays
+1. create a CFC that extends this base
+1. add 3 types of properties: `simple`, `struct`s or `array`s
 ```
 component extends="beans.base" accessors=true {
 
@@ -33,12 +33,12 @@ property name="items" json:type="array" json:cfc="beans.basket.item";
 ```
 
 ## json:type
-string 	"example"
-boolean 	true/false
-number 	3.1415
-date 	"2017-04-26T10:36:00Z"
-struct 	{}
-array 	[]
+1. `string`	"example"
+1. `boolean` 	true/false
+1. `number` 	3.1415
+1. `date` 	"2017-04-26T10:36:00Z"
+1. `struct` 	{}
+1. `array` 	[]
 
 ## json:serializable
 true/false
