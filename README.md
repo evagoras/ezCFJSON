@@ -45,6 +45,7 @@ struct | {}
 
 ## json:serializable
 true/false
+
 This is a boolean flag to indicate whether to output the key or not
 
 ## json:cfc
