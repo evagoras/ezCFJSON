@@ -2,7 +2,7 @@
 A base component for **safely** (de)serializing from/to JSON and native CF objects.
 
 ## Summary
-A single file which is independent of any framework and works with Lucee 4.5+ or Adobe 11+. This can be used for any new project, to define your JSON response using CFCs, by extending this base, and off you go.
+A single file which is independent of any framework and works with Lucee 4.5+ and Adobe 11+. This can be used for any new project, to define your JSON response using CFCs, by extending this base, and off you go.
 
 ## Features
 * ACF11+ & Lucee4.5+ compatible
