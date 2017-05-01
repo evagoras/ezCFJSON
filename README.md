@@ -1,8 +1,7 @@
 # ezCFJSON
-
-## Summary
 A base component for **safely** (de)serializing from/to JSON and native CF objects.
 
+## Summary
 A single file which is independent of any framework and works with Lucee 4.5+ or Adobe 11+. Define your JSON response using CFCs, extending this base and off you go.
 
 ## Features
