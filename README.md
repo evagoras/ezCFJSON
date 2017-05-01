@@ -118,7 +118,7 @@ struct = {
 };
 user = new user();
 user.populate( struct );
-user.toJson( false );
+user.toJson( everything = false );
 ```
 Notice that we asked to have only the populated fields serialized. This is the result:
 ```
@@ -159,8 +159,9 @@ struct = {
 };
 user = new user();
 user.populate( struct );
-user.toNative();
+user.toNative( everything = false );
 ```
+We asked to serialize just the populated fields, so here's a screenshot of the resulting struct:
 <img src="https://github.com/evagoras/ezCFJSON/blob/master/toNative.png" alt="toNative() result" width="400">
 
 ## Property attributes
