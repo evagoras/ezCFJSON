@@ -54,5 +54,7 @@ Name | JavaCast | Examples
 `true` or `false`. The default is `true`.<br>
 This is a boolean flag to indicate whether to output the key or not.
 
-### json:cfc
-The CFC location of the Bean to map as either a one-to-one (`struct`) or one-to-many (`array`).
+### json:cfc & json:type="array/struct"
+The CFC location of the Bean to map as either a one-to-one (`struct`) or one-to-many (`array`). This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
+* `struct`: one-to-one
+* `array`: one-to-many
