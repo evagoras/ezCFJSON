@@ -166,7 +166,9 @@ struct = {
 };
 user = new user();
 user.populate( struct );
-user.toNative( everything = false );
+nativeStruct = user.toNative( everything = false );
+
+writedump( nativeStruct );
 ```
 We asked to serialize just the populated fields, so here's a screenshot of the resulting struct:
 
