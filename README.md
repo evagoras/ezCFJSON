@@ -175,7 +175,7 @@ We asked to serialize just the populated fields, so here's a screenshot of the r
 <img src="https://github.com/evagoras/ezCFJSON/blob/master/toNative.png" alt="toNative() result" width="400">
 
 ## Property attributes
-All attributes live under a custom prefix of `json:` to avoid conflicting with any default ones.
+All attributes live under a custom prefix of `json:` to avoid conflicting with the default.
 
 ### json:type
 The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
