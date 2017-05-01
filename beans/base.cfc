@@ -31,7 +31,7 @@ component {
 	public struct function toNative
 	( boolean everything = true )
 	{
-	 	return deserializeJson( toJson( everything = everything ) );
+		return deserializeJson( toJson( everything = everything ) );
 	}
 
 
@@ -680,7 +680,6 @@ component {
 	{
 		var args[ property ] = value;
 		invoke( cfc, "set#property#", args );
-		// evaluate( "cfc.set#property#( value )" );
 	}
 
 

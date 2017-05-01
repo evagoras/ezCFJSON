@@ -30,93 +30,93 @@ struct = {
 };
 
 json = '{
-    "ID": 233,
-    "firstName": "Evagoras",
-    "familyName": "Charalambous",
-    "distributorID": 12345,
-    "active": true,
-    "billingAddress": {
-        "username": null,
-        "attention": null,
-        "organisation": "my company",
-        "address1": "Street 1",
-        "address2": null,
-        "city": null,
-        "county": null,
-        "country2LCode": null,
-        "postcode": null,
-        "email": null,
-        "telephone": "12345"
-    },
-    "shippingAddress": {
-        "username": null,
-        "attention": null,
-        "organisation": null,
-        "address1": null,
-        "address2": "Street 2",
-        "city": "London",
-        "county": null,
-        "country2LCode": null,
-        "postcode": null,
-        "email": null,
-        "telephone": null
-    },
-    "items": [
-        {
-            "id": 1,
-            "size": null,
-            "quantity": 3,
-            "unit": null,
-            "productCode": null,
-            "description": null,
-            "unitCost": 4.56,
-            "totalUnitsCost": null,
-            "totalUnitsDiscount": null,
-            "status": null,
-            "purchaseOrderNumber": null
-        },
-        {
-            "id": 2,
-            "size": 4,
-            "quantity": null,
-            "unit": null,
-            "productCode": null,
-            "description": null,
-            "unitCost": 10.00,
-            "totalUnitsCost": null,
-            "totalUnitsDiscount": null,
-            "status": null,
-            "purchaseOrderNumber": null
-        }
-    ]
+	"ID": 233,
+	"firstName": "Evagoras",
+	"familyName": "Charalambous",
+	"distributorID": 12345,
+	"active": true,
+	"billingAddress": {
+		"username": null,
+		"attention": null,
+		"organisation": "my company",
+		"address1": "Street 1",
+		"address2": null,
+		"city": null,
+		"county": null,
+		"country2LCode": null,
+		"postcode": null,
+		"email": null,
+		"telephone": "12345"
+	},
+	"shippingAddress": {
+		"username": null,
+		"attention": null,
+		"organisation": null,
+		"address1": null,
+		"address2": "Street 2",
+		"city": "London",
+		"county": null,
+		"country2LCode": null,
+		"postcode": null,
+		"email": null,
+		"telephone": null
+	},
+	"items": [
+		{
+			"id": 1,
+			"size": null,
+			"quantity": 3,
+			"unit": null,
+			"productCode": null,
+			"description": null,
+			"unitCost": 4.56,
+			"totalUnitsCost": null,
+			"totalUnitsDiscount": null,
+			"status": null,
+			"purchaseOrderNumber": null
+		},
+		{
+			"id": 2,
+			"size": 4,
+			"quantity": null,
+			"unit": null,
+			"productCode": null,
+			"description": null,
+			"unitCost": 10.00,
+			"totalUnitsCost": null,
+			"totalUnitsDiscount": null,
+			"status": null,
+			"purchaseOrderNumber": null
+		}
+	]
 }';
 
 jsonminimum = '{
-    "billingAddress": {
-        "telephone": "12345",
-        "organisation": "my company",
-        "address1": "Street 1"
-    },
-    "shippingAddress": {
-        "address2": "Street 2",
-        "city": "London"
-    },
-    "distributorID": 12345,
-    "items": [
-        {
-            "id": 1,
-            "quantity": 3,
-            "unitCost": 4.56
-        },
-        {
-            "size": 4,
-            "id": 2,
-            "unitCost": 10.00
-        }
-    ],
-    "ID": 233,
-    "firstName": "Evagoras",
-    "active": true,
-    "familyName": "Charalambous"
+	"billingAddress": {
+		"telephone": "12345",
+		"organisation": "my company",
+		"address1": "Street 1"
+	},
+	"shippingAddress": {
+		"address2": "Street 2",
+		"city": "London"
+	},
+	"distributorID": 12345,
+	"items": [
+		{
+			"id": 1,
+			"quantity": 3,
+			"unitCost": 4.56
+		},
+		{
+			"size": 4,
+			"id": 2,
+			"unitCost": 10.00
+		}
+	],
+	"ID": 233,
+	"firstName": "Evagoras",
+	"active": true,
+	"familyName": "Charalambous"
 }';
 </cfscript>
