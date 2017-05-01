@@ -47,7 +47,8 @@ You can populate from
 * a CF Struct
 * a CF Query
 * a JSON string
-Example:
+
+Example
 ```
 struct = {
 	id = 233,
@@ -55,6 +56,30 @@ struct = {
 }
 user = new user();
 user.populate( struct );
+```
+
+## toJson()
+Serializes the Bean (and its nested relationships) to a JSON string
+```
+struct = {
+	id = 233,
+	title = "Dr"
+}
+user = new user();
+user.populate( struct );
+user.toJson();
+```
+
+### toNative()
+Returns a CF Struct of the Bean and its nested relatiosnhips
+```
+struct = {
+	id = 233,
+	title = "Dr"
+}
+user = new user();
+user.populate( struct );
+user.toNative();
 ```
 
 ## Property json: attributes
