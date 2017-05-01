@@ -1,8 +1,9 @@
 # ezCFJSON
-A base component for **safely** (de)serializing from/to JSON and native CF objects.
 
 ## Summary
-This base component goes around the legendary CFML (de)serialization issues because of the fact that it's a typeless language and the decisions that were taken in its design regarding NULLs. It will correctly handle value database NULLs, struct NULLs, JSON NULLs, and keep original strings of values like booleans or numerics. It will also let you define in one place the casing of the resulting JSON file (in the CFC), letting you use normal struct notation in your code instead of worrying about wrapping your name in quotes to get your key named right. It will automatically wire up relationships between other beans in a one-to-one (struct) or one-to-many (array) way.
+A base component for **safely** (de)serializing from/to JSON and native CF objects.
+
+A single file which is independent of any framework and works with Lucee 4.5+ or Adobe 11+. Define your JSON response using CFCs, extending this base and off you go.
 
 ## Features
 * ACF11+ & Lucee4.5+ compatible
@@ -37,6 +38,23 @@ component extends="beans.base" accessors=true {
 	}
 
 }
+```
+
+## Public methods
+
+### Populate()
+You can populate from
+* a CF Struct
+* a CF Query
+* a JSON string
+Example:
+```
+struct = {
+	id = 233,
+	title = "Dr"
+}
+user = new user();
+user.populate( struct );
 ```
 
 ## Property json: attributes
