@@ -111,7 +111,7 @@ jsonminimum = '{
         {
             "size": 4,
             "id": 2,
-            "unitCost": 10
+            "unitCost": 10.00
         }
     ],
     "ID": 233,
