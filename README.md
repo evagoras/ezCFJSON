@@ -85,6 +85,8 @@ struct = {
 };
 user = new user();
 user.populate( struct );
+
+writedump( user );
 ```
 <img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="400">
 
