@@ -35,6 +35,7 @@ The data which is used to populate the Bean may have a different key name going 
 ```
 property name="firstName" json:column="strFirstName";
 ```
+In other words, for this case, the `column` is what goes into the Bean, the `name` is what comes out.
 
 ### json:type
 The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
