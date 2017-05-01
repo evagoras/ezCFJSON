@@ -42,7 +42,7 @@ component extends="beans.base" accessors=true {
 
 ## Public methods
 
-### Populate([everything=true])
+### Populate()
 You can populate from
 * a CF Struct
 * a CF Query
