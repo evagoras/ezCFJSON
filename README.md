@@ -2,7 +2,7 @@
 A base component for **safely** (de)serializing from/to JSON and native CF objects.
 
 ## How to use
-1. create a CFC that extends this base
+1. create a CFC that extends the base, found under `/beans/base.cfc`
 1. add 3 types of properties: `simple`, `struct`s or `array`s
 ```
 component extends="beans.base" accessors=true {
