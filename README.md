@@ -171,17 +171,10 @@ We asked to serialize just the populated fields, so here's a screenshot of the r
 
 ## Property attributes
 
-### json:column
-The data which is used to populate the Bean may have a different key name going in than what you need coming out. For example, your JSON may need to respond with `firstName`, while your query column populating the Bean is called `strFirstName`. You would then create a property like this:
-```
-property name="firstName" json:column="strFirstName";
-```
-In other words, for this case, the `column` is what goes into the Bean, the `name` is what comes out.
-
 ### json:type
 The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
 
-Name | JavaCast | Examples
+`json:type` | JavaCast | Examples
 :--- | :--- | :--- 
 `string` | `string ` | "example", "no", "true", "12345"
 `boolean` | `boolean` | true, false, 1, 0, yes, no, "yes, "no", "1", "0", "true", "false"
@@ -190,12 +183,18 @@ Name | JavaCast | Examples
 `array` | CFC one-to-many | [], [{}, {}]
 `struct` | CFC one-to-one | {}
 
-
-### json:serializable
-`true` or `false`. The default is `true`.<br>
-This is a boolean flag to indicate whether to output the key or not.
-
 ### json:cfc
 The `json:cfc` is a Bean to map internally to create a nested relationship with either one or many of them. This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
 * `struct`: one-to-one
 * `array`: one-to-many
+
+### json:column
+The data which is used to populate the Bean may have a different key name going in than what you need coming out. For example, your JSON may need to respond with `firstName`, while your query column populating the Bean is called `strFirstName`. You would then create a property like this:
+```
+property name="firstName" json:column="strFirstName";
+```
+In other words, for this case, the `column` is what goes into the Bean, the `name` is what comes out.
+
+### json:serializable
+`true` or `false`. The default is `true`.<br>
+This is a boolean flag to indicate whether to output the key or not.
