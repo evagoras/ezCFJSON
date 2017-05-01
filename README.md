@@ -178,7 +178,7 @@ We asked to serialize just the populated fields, so here's a screenshot of the r
 All attributes live under a custom prefix of `json:` to avoid conflicting with the default.
 
 ### json:type
-The default is `string`. It correctly serializes and deserializes into the correct Java types based on the attribute you assign.
+The default is `string`. By defining this you force your key to correctly serialize and deserialize into the correct Java type, and override and guessing work done by CF.
 
 `json:type` | JavaCast | Examples
 :--- | :--- | :--- 
