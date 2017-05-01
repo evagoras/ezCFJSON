@@ -55,6 +55,6 @@ Name | JavaCast | Examples
 This is a boolean flag to indicate whether to output the key or not.
 
 ### json:cfc & json:type="array/struct"
-The CFC location of the Bean to map as either a one-to-one (`struct`) or one-to-many (`array`). This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
+The `json:cfc` is a Bean to map internally to create a nested relationship with either one or many of them. This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
 * `struct`: one-to-one
 * `array`: one-to-many
