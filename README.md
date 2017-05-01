@@ -162,7 +162,7 @@ user.populate( struct );
 user.toNative();
 ```
 
-## Property json: attributes
+## Property attributes
 
 ### json:column
 The data which is used to populate the Bean may have a different key name going in than what you need coming out. For example, your JSON may need to respond with `firstName`, while your query column populating the Bean is called `strFirstName`. You would then create a property like this:
