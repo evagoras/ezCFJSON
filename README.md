@@ -190,7 +190,7 @@ The default is `string`. By defining this you force your key to correctly serial
 `struct` | CFC one-to-one | {}
 
 ### json:cfc
-The `json:cfc` is a Bean to map internally to create a nested relationship with either one or many of them. This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
+The `json:cfc` is a dotted path to another Bean CFC of yours, which is used to map internally and create a nested relationship. This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
 * `struct`: one-to-one, e.g. `property name="shippingAddress" json:type="struct" json:cfc="beans.basket.address"`
 * `array`: one-to-many, e.g. `property name="items" json:type="array" json:cfc="beans.basket.item"`
 
