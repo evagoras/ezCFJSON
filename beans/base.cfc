@@ -624,6 +624,7 @@ component {
 
 
 	/**
+	 * Function by Richard Herbert
 	 * @hint Formats a date into the ISO-8601 format
 	 * @datetime The date and time to convert
 	 * @convertToTUC Whether to use the UTC time zone or not
