@@ -120,36 +120,9 @@ user = new user();
 user.populate( struct );
 user.toJson( false );
 ```
-Notice that we asked to have only the populated fields serialized.
+Notice that we asked to have only the populated fields serialized. This is the result:
 ```
-{
-  "ID": 233,
-  "firstName": "Evagoras",
-  "familyName": "Charalambous",
-  "distributorID": 12345,
-  "active": true,
-  "billingAddress": {
-    "organisation": "my company",
-    "address1": "Street 1",
-    "telephone": "12345"
-  },
-  "shippingAddress": {
-    "address2": "Street 2",
-    "city": "London"
-  },
-  "items": [
-    {
-      "id": 1,
-      "quantity": 3,
-      "unitCost": 4.56
-    },
-    {
-      "id": 2,
-      "size": 4,
-      "unitCost": 10.00
-    }
-  ]
-}
+{"ID":233,"firstName":"Evagoras","familyName":"Charalambous","distributorID":12345,"active":true,"billingAddress":{"organisation":"my company","address1":"Street 1","telephone":"12345"},"shippingAddress":{"address2":"Street 2","city":"London"},"items":[{"id":1,"quantity":3,"unitCost":4.56},{"id":2,"size":4,"unitCost":10.00}]}
 ```
 
 ### toNative([everything=true])
