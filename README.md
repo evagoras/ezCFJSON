@@ -51,7 +51,7 @@ You can populate from
 * a CF Query
 * a JSON string
 
-Example
+This example populates from a CF struct:
 ```
 struct = {
 	id = 233,
