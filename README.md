@@ -14,6 +14,7 @@ component extends="beans.base" accessors=true {
 	property name="title" json:serializable=false;
 	property name="firstName" json:column="strFirstName";
 	property name="familyName";
+	property name="dateOfBirth" json:type="date";
 	property name="distributorID" json:type="number";
 	property name="active" json:type="boolean";
 	property name="billingAddress" json:type="struct" json:cfc="beans.basket.address";
