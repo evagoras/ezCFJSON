@@ -82,6 +82,7 @@ struct = {
 user = new user();
 user.populate( struct );
 ```
+<img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="400">
 
 ## toJson([everything=true])
 Serializes the Bean (and its nested relationships) to a JSON string
@@ -117,7 +118,11 @@ struct = {
 };
 user = new user();
 user.populate( struct );
-user.toJson();
+user.toJson( false );
+```
+Notice that we asked to have only the populated fields serialized. This is the result:
+```
+{"ID":233,"firstName":"Evagoras","familyName":"Charalambous","distributorID":12345,"active":true,"billingAddress":{"organisation":"my company","address1":"Street 1","telephone":"12345"},"shippingAddress":{"address2":"Street 2","city":"London"},"items":[{"id":1,"quantity":3,"unitCost":4.56},{"id":2,"size":4,"unitCost":10.00}]}
 ```
 
 ### toNative([everything=true])
@@ -157,7 +162,7 @@ user.populate( struct );
 user.toNative();
 ```
 
-## Property json: attributes
+## Property attributes
 
 ### json:column
 The data which is used to populate the Bean may have a different key name going in than what you need coming out. For example, your JSON may need to respond with `firstName`, while your query column populating the Bean is called `strFirstName`. You would then create a property like this:
@@ -183,7 +188,7 @@ Name | JavaCast | Examples
 `true` or `false`. The default is `true`.<br>
 This is a boolean flag to indicate whether to output the key or not.
 
-### json:cfc & json:type="array/struct"
+### json:cfc
 The `json:cfc` is a Bean to map internally to create a nested relationship with either one or many of them. This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
 * `struct`: one-to-one
 * `array`: one-to-many
