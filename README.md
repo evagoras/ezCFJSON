@@ -7,13 +7,15 @@ A single file which is independent of any framework and works with Lucee 4.5+ or
 
 ## Features
 * ACF11+ & Lucee4.5+ compatible
-* Handles NULLs (database, structs, JSON files)
-* Maintains strings (booleans, numerics)
-* Enforces key casing
+* Properly handles NULLs (from database, structs, or JSON files)
+* Maintains strings as string (e.g. "yes", "no", "123", etc.)
+* Enforces key casing (e.g. "firstName")
 * Auto-wires one-to-one and one-to-many relationships with other CFCs
 * Populates from CF Struct, CF Query or JSON string
 * Outputs ISO-8601 date format
-* Serializes either all Bean fields or just the populated ones
+* Serializes all Bean fields or just the populated ones
+* Can exclude individual keys from being serialized
+* A key can have different population/serialization names
 
 ## How to create a new Bean
 1. create a CFC that extends the base, found under `/beans/base.cfc`
