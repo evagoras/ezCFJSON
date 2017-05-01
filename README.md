@@ -88,44 +88,45 @@ user.populate( struct );
 <img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="400">
 
 ## toJson([everything=true])
-Serializes the Bean (and its nested relationships) to a JSON string
+Serializes the Bean (and its nested relationships) to a JSON string.
+
+This example populates and serializes from a JSON string:
 ```
-struct = {
-	id = 233,
-	title = "Dr",
-	strfirstname = "Evagoras",
-	familyname = "Charalambous",
-	distributorid = 12345,
-	active = true,
-	billingAddress = {
-		organisation = "my company",
-		address1 = "Street 1",
-		telephone = "12345"
+jsonString = '{
+	"billingAddress": {
+		"telephone": "12345",
+		"organisation": "my company",
+		"address1": "Street 1"
 	},
-	shippingAddress = {
-		address2 = "Street 2",
-		"city" = "London"
+	"shippingAddress": {
+		"address2": "Street 2",
+		"city": "London"
 	},
-	items = [
+	"distributorID": 12345,
+	"items": [
 		{
-			id = 1,
-			quantity = 3,
-			unitcost = 4.56
+			"id": 1,
+			"quantity": 3,
+			"unitCost": 4.56
 		},
 		{
-			id = 2,
-			size = 4,
-			unitcost = 10.00
+			"size": 4,
+			"id": 2,
+			"unitCost": 10.00
 		}
-	]
-};
+	],
+	"ID": 233,
+	"firstName": "Evagoras",
+	"active": true,
+	"familyName": "Charalambous"
+}';
 user = new user();
-user.populate( struct );
+user.populate( jsonString );
 user.toJson( everything = false );
 ```
 Notice that we asked to have only the populated fields serialized. This is the result:
 ```
-{"ID":233,"firstName":"Evagoras","familyName":"Charalambous","distributorID":12345,"active":true,"billingAddress":{"organisation":"my company","address1":"Street 1","telephone":"12345"},"shippingAddress":{"address2":"Street 2","city":"London"},"items":[{"id":1,"quantity":3,"unitCost":4.56},{"id":2,"size":4,"unitCost":10.00}]}
+{"ID":233,"firstName":"Evagoras","familyName":"Charalambous","distributorID":12345,"active":true,"billingAddress":{"organisation":"my company","address1":"Street 1","telephone":"12345"},"shippingAddress":{"address2":"Street 2","city":"London"},"items":[{"id":1,"quantity":3,"unitCost":4.56},{"id":2,"size":4,"unitCost":10.0}]}
 ```
 
 ### toNative([everything=true])
