@@ -52,8 +52,33 @@ Example
 ```
 struct = {
 	id = 233,
-	title = "Dr"
-}
+	title = "Dr",
+	strfirstname = "Evagoras",
+	familyname = "Charalambous",
+	distributorid = 12345,
+	active = true,
+	billingAddress = {
+		organisation = "my company",
+		address1 = "Street 1",
+		telephone = "12345"
+	},
+	shippingAddress = {
+		address2 = "Street 2",
+		"city" = "London"
+	},
+	items = [
+		{
+			id = 1,
+			quantity = 3,
+			unitcost = 4.56
+		},
+		{
+			id = 2,
+			size = 4,
+			unitcost = 10.00
+		}
+	]
+};
 user = new user();
 user.populate( struct );
 ```
@@ -63,8 +88,33 @@ Serializes the Bean (and its nested relationships) to a JSON string
 ```
 struct = {
 	id = 233,
-	title = "Dr"
-}
+	title = "Dr",
+	strfirstname = "Evagoras",
+	familyname = "Charalambous",
+	distributorid = 12345,
+	active = true,
+	billingAddress = {
+		organisation = "my company",
+		address1 = "Street 1",
+		telephone = "12345"
+	},
+	shippingAddress = {
+		address2 = "Street 2",
+		"city" = "London"
+	},
+	items = [
+		{
+			id = 1,
+			quantity = 3,
+			unitcost = 4.56
+		},
+		{
+			id = 2,
+			size = 4,
+			unitcost = 10.00
+		}
+	]
+};
 user = new user();
 user.populate( struct );
 user.toJson();
@@ -75,8 +125,33 @@ Returns a CF Struct of the Bean and its nested relatiosnhips
 ```
 struct = {
 	id = 233,
-	title = "Dr"
-}
+	title = "Dr",
+	strfirstname = "Evagoras",
+	familyname = "Charalambous",
+	distributorid = 12345,
+	active = true,
+	billingAddress = {
+		organisation = "my company",
+		address1 = "Street 1",
+		telephone = "12345"
+	},
+	shippingAddress = {
+		address2 = "Street 2",
+		"city" = "London"
+	},
+	items = [
+		{
+			id = 1,
+			quantity = 3,
+			unitcost = 4.56
+		},
+		{
+			id = 2,
+			size = 4,
+			unitcost = 10.00
+		}
+	]
+};
 user = new user();
 user.populate( struct );
 user.toNative();
