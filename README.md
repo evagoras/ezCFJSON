@@ -185,8 +185,8 @@ The default is `string`. It correctly serializes and deserializes into the corre
 
 ### json:cfc
 The `json:cfc` is a Bean to map internally to create a nested relationship with either one or many of them. This attribute needs to be defined in conjuction with `json:type` to define the type of relationship to create:
-* `struct`: one-to-one
-* `array`: one-to-many
+* `struct`: one-to-one, e.g. `property name="shippingAddress" json:type="struct" json:cfc="beans.basket.address"`
+* `array`: one-to-many, e.g. `property name="items" json:type="array" json:cfc="beans.basket.item"`
 
 ### json:column
 The data which is used to populate the Bean may have a different key name going in than what you need coming out. For example, your JSON may need to respond with `firstName`, while your query column populating the Bean is called `strFirstName`. You would then create a property like this:
