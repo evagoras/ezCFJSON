@@ -15,6 +15,7 @@ A single file which is independent of any framework and works with Lucee 4.5+ an
 * Serializes all Bean fields or just the populated ones
 * Can exclude individual keys from being serialized
 * A key can have different population/serialization names
+* Uses the native `serializeJson()` and `deserializeJson()`, which are fast
 
 ## How to create a new Bean
 1. Your new CFC needs to extend the base, found under this project at `/beans/base.cfc`.
