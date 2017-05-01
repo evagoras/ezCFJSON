@@ -82,7 +82,7 @@ struct = {
 user = new user();
 user.populate( struct );
 ```
-<img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean">
+<img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="300">
 
 ## toJson([everything=true])
 Serializes the Bean (and its nested relationships) to a JSON string
