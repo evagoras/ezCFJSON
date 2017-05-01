@@ -88,7 +88,7 @@ user.populate( struct );
 <img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="400">
 
 ## toJson([everything=true])
-Serializes the Bean (and its nested relationships) to a JSON string.
+Serializes the Bean (and its nested relationships) to a JSON string. By default it will serialize all the properties, including the nested ones, unless you pass a `false` argument to the function which will then return only the populated ones.
 
 This example populates and serializes from a JSON string:
 ```
@@ -130,7 +130,7 @@ Notice that we asked to have only the populated fields serialized. This is the r
 ```
 
 ### toNative([everything=true])
-Returns a CF Struct of the Bean and its nested relatiosnhips
+Returns a CF Struct of the Bean and its nested relatiosnhips. By default it will add all the properties, including the nested ones, unless you pass a `false` argument to the function which will then add only the populated ones.
 ```
 struct = {
 	id = 233,
