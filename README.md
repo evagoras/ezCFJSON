@@ -88,7 +88,7 @@ user.populate( struct );
 
 writedump( user );
 ```
-<img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="400">
+<img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="500">
 
 ### 2. toJson([everything=true])
 Serializes the Bean (and its nested relationships) to a JSON string. By default it will serialize all the properties, including the nested ones, unless you pass a `false` argument to the function which will then serialize only the populated ones.
