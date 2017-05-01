@@ -161,6 +161,7 @@ user = new user();
 user.populate( struct );
 user.toNative();
 ```
+<img src="https://github.com/evagoras/ezCFJSON/blob/master/toNative.png" alt="toNative() result" width="400">
 
 ## Property attributes
 
