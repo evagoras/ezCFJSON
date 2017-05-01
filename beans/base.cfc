@@ -18,7 +18,7 @@ component {
 	public string function toJson
 	( boolean everything = true )
 	{
-		var payload = this.serialize( everything = arguments.everything );
+		var payload = this.serialize( everything = everything );
 		var jsonString = serializeJson( payload );
 		return removeSTX( jsonString = jsonString );
 	}
@@ -31,7 +31,7 @@ component {
 	public struct function toNative
 	( boolean everything = true )
 	{
-	 	return deserializeJson( toJson( everything = arguments.everything ) );
+	 	return deserializeJson( toJson( everything = everything ) );
 	}
 
 
@@ -43,17 +43,17 @@ component {
 	( required any memento )
 	{
 		var data = {};
-		if ( isJson( arguments.memento ) )
+		if ( isJson( memento ) )
 		{
-			data = deserializeJson( arguments.memento );
+			data = deserializeJson( memento );
 		}
-		if ( isQuery( arguments.memento ) )
+		if ( isQuery( memento ) )
 		{
-			data = queryToStruct( arguments.memento );
+			data = queryToStruct( memento );
 		}
-		if ( isStruct( arguments.memento ) )
+		if ( isStruct( memento ) )
 		{
-			data = arguments.memento;
+			data = memento;
 		}
 		// populate all the properties in this Bean
 		populateSimpleProperties( memento = data );
@@ -68,9 +68,9 @@ component {
 	public struct function serialize
 	( required boolean everything )
 	{
-		var s = serializeSimpleProperties( everything = arguments.everything );
-		s.putAll( serializeOneToOneProperties( everything = arguments.everything ) );
-		s.putAll( serializeOneToManyProperties( everything = arguments.everything ) );
+		var s = serializeSimpleProperties( everything = everything );
+		s.putAll( serializeOneToOneProperties( everything = everything ) );
+		s.putAll( serializeOneToManyProperties( everything = everything ) );
 		return s;
 	}
 
@@ -89,7 +89,7 @@ component {
 	{
 		var properties = variables.categorizedProperties[ "simple" ];
 		// for every key in the memento payload
-		for ( var mementoKey in arguments.memento )
+		for ( var mementoKey in memento )
 		{
 			// try to find that key in the Bean properties
 			for ( var property in properties )
@@ -107,13 +107,13 @@ component {
 				)
 				{
 					// If the payload has a value then simply assign it to the property
-					if ( arguments.memento.keyExists( mementoKey ) )
+					if ( memento.keyExists( mementoKey ) )
 					{
 						// set the actual value
 						_setProperty
 						(
 							property = property.name,
-							value = arguments.memento[ mementoKey ]
+							value = memento[ mementoKey ]
 						);
 						// set the Java type based on the json:type property attribute
 						setKeyJavaType( property.name );
@@ -140,7 +140,7 @@ component {
 	{
 		// get all the one-to-one properties of this Bean
 		var properties = variables.categorizedProperties[ "struct" ];
-		for ( var mementoKey in arguments.memento )
+		for ( var mementoKey in memento )
 		{
 			// try to find that key in the Bean properties
 			for ( var property in properties )
@@ -159,15 +159,15 @@ component {
 				{
 					if
 					(
-						arguments.memento.keyExists( mementoKey )
+						memento.keyExists( mementoKey )
 						&&
-						isStruct( arguments.memento[ mementoKey ] ) == true
+						isStruct( memento[ mementoKey ] ) == true
 					)
 					{
 						// instantiate the linked Bean
 						var bean = createObject( "component", property[ "json:cfc" ] ).init();
 						// populate the Bean with the payload specific part
-						bean.populate( arguments.memento[ mementoKey ] );
+						bean.populate( memento[ mementoKey ] );
 						// add the linked populated Bean to this Bean's specific property
 						_setProperty
 						(
@@ -199,7 +199,7 @@ component {
 		var properties = variables.categorizedProperties[ "array" ];
 		var bean = "";
 		var injectedBeans = [];
-		for ( var mementoKey in arguments.memento )
+		for ( var mementoKey in memento )
 		{
 			// try to find that key in the Bean properties
 			for ( var property in properties )
@@ -219,13 +219,13 @@ component {
 					// If the payload has a value then simply assign it to the property
 					if
 					(
-						arguments.memento.keyExists( mementoKey )
+						memento.keyExists( mementoKey )
 						&&
-						isArray( arguments.memento[ mementoKey ] ) == true
+						isArray( memento[ mementoKey ] ) == true
 					)
 					{
 						// loop through the payload array for that property
-						for ( var mementoItem in arguments.memento[ mementoKey ] )
+						for ( var mementoItem in memento[ mementoKey ] )
 						{
 							// instantiate the linked Bean
 							bean = createObject( "component", property[ "json:cfc" ] ).init();
@@ -266,7 +266,7 @@ component {
 			// exclude any fields that were not populated
 			if
 			(
-				arguments.everything == false
+				everything == false
 				&& variables.populatedProperties.find( fieldName.name ) == 0
 			)
 			{
@@ -352,7 +352,7 @@ component {
 			// exclude any fields that were not populated
 			if
 			(
-				arguments.everything == false
+				everything == false
 				&& variables.populatedProperties.find( property.name ) == 0
 			)
 			{
@@ -369,7 +369,7 @@ component {
 			}
 			if  ( variables.keyExists( property.name ) )
 			{
-				out[ property.name ] = variables[ property.name ].serialize( everything = arguments.everything );
+				out[ property.name ] = variables[ property.name ].serialize( everything = everything );
 			}
 			else
 			{
@@ -391,7 +391,7 @@ component {
 			// exclude any fields that were not populated
 			if
 			(
-				arguments.everything == false
+				everything == false
 				&& variables.populatedProperties.find( property.name ) == 0
 			)
 			{
@@ -411,7 +411,7 @@ component {
 				out[ property.name ] = [];
 				for ( var propertyArray in variables[ property.name ] )
 				{
-					out[ property.name ].append( propertyArray.serialize( everything = arguments.everything ) );
+					out[ property.name ].append( propertyArray.serialize( everything = everything ) );
 				}
 			}
 			else
@@ -430,13 +430,13 @@ component {
 	private any function removeSTX
 	( required any jsonString )
 	{
-		if ( isNull( arguments.jsonString ) )
+		if ( isNull( jsonString ) )
 		{
-			return arguments.jsonString;
+			return jsonString;
 		}
 		else
 		{
-			var out = replace( arguments.jsonString, chr(2), "", "all" );
+			var out = replace( jsonString, chr(2), "", "all" );
 			out = replaceNoCase( out, "\u0002", "", "all" );
 			return out;
 		}
@@ -482,12 +482,12 @@ component {
 	private void function setKeyJavaType
 	( required string property )
 	{
-		var prop = variables.namedSimpleProperties[ arguments.property ];
+		var prop = variables.namedSimpleProperties[ property ];
 		if ( prop.keyExists( "json:type" ) )
 		{
-			var propValue = invoke( this, "get#arguments.property#" );
+			var propValue = invoke( this, "get#property#" );
 			_setProperty(
-				arguments.property,
+				property,
 				javacast(
 					getPropertyJavaCastType( prop["json:type"] ),
 					propValue
@@ -505,7 +505,7 @@ component {
 	( required string type )
 	{
 		var javaType = "";
-		switch ( arguments.type )
+		switch ( type )
 		{
 			case "boolean":
 				javaType = "boolean";
@@ -578,8 +578,8 @@ component {
 	{
 		var data = {};
 		// get array of query columns in the proper case as defined in the SELECT query
-		// var queryColumns = arguments.memento.getMetaData().getColumnLabels();
-		var queryColumns = getMetadata( arguments.memento ).map(
+		// var queryColumns = memento.getMetaData().getColumnLabels();
+		var queryColumns = getMetadata( memento ).map(
 			function( col ) {
 				return col.name;
 			}
@@ -588,13 +588,13 @@ component {
 		for ( var column in queryColumns )
 		{
 			// java hooks for determining if a column is really a NULL
-			if ( isQueryColumnNull( qry=arguments.memento, column=column ) )
+			if ( isQueryColumnNull( qry=memento, column=column ) )
 			{
 				data[ column ] = javacast( "null", 0 );
 			}
 			else
 			{
-				data[ column ] = arguments.memento[ column ][ 1 ];
+				data[ column ] = memento[ column ][ 1 ];
 			}
 		}
 		return data;
@@ -614,11 +614,11 @@ component {
 		numeric row = 1
 	)
 	{
-		var cacheRow = arguments.qry.currentRow;
-		arguments.qry.absolute( row );
-		var value = arguments.qry.getObject( column );
-		var valueIsNull = arguments.qry.wasNull();
-		arguments.qry.absolute( cacheRow );
+		var cacheRow = qry.currentRow;
+		qry.absolute( row );
+		var value = qry.getObject( column );
+		var valueIsNull = qry.wasNull();
+		qry.absolute( cacheRow );
 		return valueIsNull;
 	}
 
@@ -634,18 +634,18 @@ component {
 		boolean convertToUTC = true
 	)
 	{
-		if ( len(arguments.dateTime ) )
+		if ( len(dateTime ) )
 		{
-			if ( arguments.convertToUTC == true )
+			if ( convertToUTC == true )
 			{
 				// Convert only if it's not already in UTC.
-				if ( find("T", arguments.datetime) && find("Z", arguments.datetime) )
+				if ( find("T", datetime) && find("Z", datetime) )
 				{
-					return arguments.datetime;
+					return datetime;
 				}
 				else
 				{
-					arguments.datetime = dateConvert( "local2utc", arguments.datetime );
+					datetime = dateConvert( "local2utc", datetime );
 				}
 			}
 			/*
@@ -653,9 +653,9 @@ component {
 				time is formatted using 24-hour time.
 			 */
 			return
-				dateFormat( arguments.datetime, "yyyy-mm-dd" ) &
+				dateFormat( datetime, "yyyy-mm-dd" ) &
 				"T" &
-				timeFormat( arguments.datetime, "HH:mm:ss" ) &
+				timeFormat( datetime, "HH:mm:ss" ) &
 				"Z";
 		}
 		else
@@ -678,7 +678,9 @@ component {
 		any cfc = this
 	)
 	{
-		evaluate( "arguments.cfc.set#property#( arguments.value )" );
+		var args[ property ] = value;
+		invoke( cfc, "set#property#", args );
+		// evaluate( "cfc.set#property#( value )" );
 	}
 
 
@@ -693,7 +695,7 @@ component {
 		any cfc = this
 	)
 	{
-		evaluate( "arguments.cfc.set#property#( javacast('null', 0) )" );
+		evaluate( "cfc.set#property#( javacast('null', 0) )" );
 	}
 
 
