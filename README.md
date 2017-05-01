@@ -42,7 +42,7 @@ component extends="beans.base" accessors=true {
 
 ## Public methods
 
-### Populate()
+### Populate([everything=true])
 You can populate from
 * a CF Struct
 * a CF Query
@@ -83,7 +83,7 @@ user = new user();
 user.populate( struct );
 ```
 
-## toJson()
+## toJson([everything=true])
 Serializes the Bean (and its nested relationships) to a JSON string
 ```
 struct = {
@@ -120,7 +120,7 @@ user.populate( struct );
 user.toJson();
 ```
 
-### toNative()
+### toNative([everything=true])
 Returns a CF Struct of the Bean and its nested relatiosnhips
 ```
 struct = {
