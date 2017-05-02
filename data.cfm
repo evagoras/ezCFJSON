@@ -1,4 +1,8 @@
 <cfscript>
+query = queryNew( "id,strFirstName,familyname,distributorid,active", "integer,varchar,varchar,integer,bit", [
+	[233,"Evagoras","Charalambous",12345,true]
+]);
+
 struct = {
 	id = 233,
 	title = "Dr",

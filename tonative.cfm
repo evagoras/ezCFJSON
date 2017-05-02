@@ -16,6 +16,9 @@ switch ( url.populate)
 	case "jsonminimum":
 		user.populate( jsonminimum );
 		break;
+	case "query":
+		user.populate( query );
+		break;
 }
 
 writedump( user.toNative( everything = url.everything ) );
