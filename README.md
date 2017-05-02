@@ -18,7 +18,7 @@ A single file which is independent of any framework and works with Lucee 4.5+ an
 * Uses the native `serializeJson()` and `deserializeJson()`, which are fast
 
 ## How to create a new Bean
-1. Your new CFC needs to extend the base, found under this project at `/beans/base.cfc`.
+1. All new CFCs need to extend the base, found under this project at `/beans/base.cfc`.
 1. Your `init` function needs to `super.init()` the base.
 1. Your CFC needs to have `accessors` enabled so that getters and setters are automatically created for your properties.
 1. Use a template similar to the one below for creating properties.
