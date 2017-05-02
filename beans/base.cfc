@@ -12,7 +12,7 @@ component {
 
 	/**
 	 * @hint Return a JSON string of the populated bean
-	 * @fields value of all/populated to return either everything or just the populated fields.
+	 * @everything Return all the Bean fields or just the populated ones
 	 */
 	public string function toJson( boolean everything = true ) {
 		var payload = this.serialize( everything = everything );
@@ -23,7 +23,7 @@ component {
 
 	/**
 	 * @hint Return a CF Struct Native of the populated bean
-	 * @fields value of all/populated to return either everything or just the populated fields.
+	 * @everything Return all the Bean fields or just the populated ones
 	 */
 	public struct function toNative( boolean everything = true ) {
 		return deserializeJson( toJson( everything = everything ) );
@@ -54,6 +54,7 @@ component {
 
 	/**
 	 * @hint Returns the Populated Bean as a STRUCT
+	 * @everything Return all the Bean fields or just the populated ones
 	 */
 	public struct function serialize( required boolean everything ) {
 		var s = serializeSimpleProperties( everything = everything );
