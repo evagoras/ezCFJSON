@@ -490,10 +490,10 @@ component {
 		string datetime = "",
 		boolean convertToUTC = true
 	){
-		if ( len( dateTime ) ) {
+		if ( len( dateTime ) > 0 ) {
 			if ( convertToUTC == true ) {
 				// Convert only if it's not already in UTC.
-				if ( find("T", datetime) && find("Z", datetime) ) {
+				if ( findNoCase( "T", datetime ) > 0 && findNoCase( "Z", datetime ) > 0 ) {
 					return datetime;
 				} else {
 					datetime = dateConvert( "local2utc", datetime );
