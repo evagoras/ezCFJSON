@@ -389,7 +389,6 @@ component {
 				break;
 			default:
 				javaType = "string";
-				break;
 		}
 		return javaType;
 	}
@@ -418,7 +417,6 @@ component {
 						break;
 					default:
 						categorizedProperties[ "simple" ].append( property );
-						break;
 				}
 			} else {
 			/*
