@@ -80,8 +80,7 @@ component {
 			// try to find that key in the Bean properties
 			for ( var property in properties ) {
 				// if found
-				if
-				(
+				if (
 					(
 						property.keyExists( "json:column" )
 						&& len( property[ "json:column" ] )
@@ -89,8 +88,7 @@ component {
 					)
 					||
 					( property.name == mementoKey )
-				)
-				{
+				){
 					// If the payload has a value then simply assign it to the property
 					if ( memento.keyExists( mementoKey ) ) {
 						// set the actual value
@@ -134,13 +132,7 @@ component {
 					( property.name == mementoKey )
 				)
 				{
-					if
-					(
-						memento.keyExists( mementoKey )
-						&&
-						isStruct( memento[ mementoKey ] ) == true
-					)
-					{
+					if ( memento.keyExists( mementoKey ) && isStruct( memento[ mementoKey ] ) == true ) {
 						// instantiate the linked Bean
 						var bean = createObject( "component", property[ "json:cfc" ] ).init();
 						// populate the Bean with the payload specific part
@@ -187,13 +179,7 @@ component {
 				)
 				{
 					// If the payload has a value then simply assign it to the property
-					if
-					(
-						memento.keyExists( mementoKey )
-						&&
-						isArray( memento[ mementoKey ] ) == true
-					)
-					{
+					if ( memento.keyExists( mementoKey ) && isArray( memento[ mementoKey ] ) == true ) {
 						// loop through the payload array for that property
 						for ( var mementoItem in memento[ mementoKey ] ) {
 							// instantiate the linked Bean
