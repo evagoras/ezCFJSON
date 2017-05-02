@@ -490,7 +490,7 @@ component {
 		string datetime = "",
 		boolean convertToUTC = true
 	){
-		if ( len(dateTime ) ) {
+		if ( len( dateTime ) ) {
 			if ( convertToUTC == true ) {
 				// Convert only if it's not already in UTC.
 				if ( find("T", datetime) && find("Z", datetime) ) {
@@ -504,10 +504,10 @@ component {
 				time is formatted using 24-hour time.
 			 */
 			return
-				dateFormat( datetime, "yyyy-mm-dd" ) &
-				"T" &
-				timeFormat( datetime, "HH:mm:ss" ) &
-				"Z";
+				dateFormat( datetime, "yyyy-mm-dd" )
+				& "T"
+				& timeFormat( datetime, "HH:mm:ss" )
+				& "Z";
 		} else {
 			return javacast( "null", 0 );
 		}
