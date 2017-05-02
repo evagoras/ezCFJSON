@@ -15,7 +15,7 @@ component {
 	 * @everything Return all the Bean fields or just the populated ones
 	 */
 	public string function toJson( boolean everything = true ) {
-		var payload = this.serialize( everything = everything );
+		var payload = this.serialize( everything );
 		var jsonString = serializeJson( payload );
 		return removeSTX( jsonString = jsonString );
 	}
@@ -26,7 +26,7 @@ component {
 	 * @everything Return all the Bean fields or just the populated ones
 	 */
 	public struct function toNative( boolean everything = true ) {
-		return deserializeJson( toJson( everything = everything ) );
+		return deserializeJson( toJson( everything ) );
 	}
 
 
@@ -57,9 +57,9 @@ component {
 	 * @everything Return all the Bean fields or just the populated ones
 	 */
 	public struct function serialize( required boolean everything ) {
-		var s = serializeSimpleProperties( everything = everything );
-		s.putAll( serializeOneToOneProperties( everything = everything ) );
-		s.putAll( serializeOneToManyProperties( everything = everything ) );
+		var s = serializeSimpleProperties( everything );
+		s.putAll( serializeOneToOneProperties( everything ) );
+		s.putAll( serializeOneToManyProperties( everything ) );
 		return s;
 	}
 
@@ -279,7 +279,7 @@ component {
 				continue;
 			}
 			if ( variables.keyExists( property.name ) ) {
-				out[ property.name ] = variables[ property.name ].serialize( everything = everything );
+				out[ property.name ] = variables[ property.name ].serialize( everything );
 			} else {
 				out[ property.name ] = javacast( "null", 0 );
 			}
@@ -304,7 +304,7 @@ component {
 			if ( variables.keyExists( property.name ) ) {
 				out[ property.name ] = [];
 				for ( var propertyArray in variables[ property.name ] ) {
-					out[ property.name ].append( propertyArray.serialize( everything = everything ) );
+					out[ property.name ].append( propertyArray.serialize( everything ) );
 				}
 			} else {
 				out[ property.name ] = javacast( "null", 0 );
