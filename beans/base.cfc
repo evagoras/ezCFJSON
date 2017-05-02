@@ -17,7 +17,7 @@ component {
 	public string function toJson( boolean everything = true ) {
 		var payload = this.serialize( everything );
 		var jsonString = serializeJson( payload );
-		return removeSTX( jsonString = jsonString );
+		return removeSTX( jsonString );
 	}
 
 
@@ -46,9 +46,9 @@ component {
 			data = memento;
 		}
 		// populate all the properties in this Bean
-		populateSimpleProperties( memento = data );
-		populateOneToOneProperties( memento = data );
-		populateOneToManyProperties( memento = data );
+		populateSimpleProperties( data );
+		populateOneToOneProperties( data );
+		populateOneToManyProperties( data );
 	}
 
 
@@ -229,7 +229,7 @@ component {
 				if ( fieldName.keyExists( "json:type" ) ) {
 					switch ( fieldName[ "json:type" ] ) {
 					case "string":
-						out[ field ] = chr(2) & out[ field ];
+						out[ field ] = chr( 2 ) & out[ field ];
 						break;
 					case "number":
 						if ( isBoolean( out[ field ] ) ) {
