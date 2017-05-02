@@ -241,31 +241,31 @@ component {
 				out[ field ] = fieldvalue;
 				if ( fieldName.keyExists( "json:type" ) ) {
 					switch ( fieldName[ "json:type" ] ) {
-						case "string":
-							out[ field ] = chr(2) & out[ field ];
+					case "string":
+						out[ field ] = chr(2) & out[ field ];
 						break;
-						case "number":
-							if ( isBoolean( out[ field ] ) ) {
-								out[ field ] ? 1 : 0;
-							} else {
-								if ( out[ field ] == "" ) {
-									out[ field ] = javacast( "null", 0 );
-								} else {
-									out[ field ] = out[ field ];
-								}
-							}
-						break;
-						case "date":
-							if ( isDate( out[ field ] ) || isNumericDate( out[ field ] ) ) {
-								out[ field ] = getIsoTimeString( out[ field ] );
-							}
-						break;
-						case "boolean":
+					case "number":
+						if ( isBoolean( out[ field ] ) ) {
+							out[ field ] ? 1 : 0;
+						} else {
 							if ( out[ field ] == "" ) {
 								out[ field ] = javacast( "null", 0 );
 							} else {
-								out[ field ] = out[ field ] ? true : false;
+								out[ field ] = out[ field ];
 							}
+						}
+						break;
+					case "date":
+						if ( isDate( out[ field ] ) || isNumericDate( out[ field ] ) ) {
+							out[ field ] = getIsoTimeString( out[ field ] );
+						}
+						break;
+					case "boolean":
+						if ( out[ field ] == "" ) {
+							out[ field ] = javacast( "null", 0 );
+						} else {
+							out[ field ] = out[ field ] ? true : false;
+						}
 						break;
 					}
 				}
@@ -395,17 +395,17 @@ component {
 	private string function getPropertyJavaCastType( required string type ) {
 		var javaType = "";
 		switch ( type ) {
-			case "boolean":
-				javaType = "boolean";
+		case "boolean":
+			javaType = "boolean";
 			break;
-			case "string": case "date":
-				javaType = "string";
+		case "string": case "date":
+			javaType = "string";
 			break;
-			case "number":
-				javaType = "bigdecimal";
+		case "number":
+			javaType = "bigdecimal";
 			break;
-			default:
-				javaType = "string";
+		default:
+			javaType = "string";
 			break;
 		}
 		return javaType;
@@ -427,14 +427,14 @@ component {
 		for ( var property in properties ) {
 			if ( structKeyExists( property, "json:type" ) ) {
 				switch ( property[ "json:type" ] ) {
-					case "struct":
-						categorizedProperties[ "struct" ].append( property );
+				case "struct":
+					categorizedProperties[ "struct" ].append( property );
 					break;
-					case "array":
-						categorizedProperties[ "array" ].append( property );
+				case "array":
+					categorizedProperties[ "array" ].append( property );
 					break;
-					default:
-						categorizedProperties[ "simple" ].append( property );
+				default:
+					categorizedProperties[ "simple" ].append( property );
 					break;
 				}
 			} else {
