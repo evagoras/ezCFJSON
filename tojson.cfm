@@ -5,8 +5,7 @@ param name="url.populate" default="struct" type="string";
 cfinclude( template="data.cfm" );
 
 user = new beans.basket.user();
-switch ( url.populate)
-{
+switch ( url.populate) {
 	case "struct":
 		user.populate( struct );
 		break;
