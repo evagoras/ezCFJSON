@@ -121,8 +121,7 @@ component {
 			// try to find that key in the Bean properties
 			for ( var property in properties ) {
 				// if found
-				if
-				(
+				if (
 					(
 						property.keyExists( "json:column" )
 						&& len( property[ "json:column" ] )
@@ -130,8 +129,7 @@ component {
 					)
 					||
 					( property.name == mementoKey )
-				)
-				{
+				){
 					if ( memento.keyExists( mementoKey ) && isStruct( memento[ mementoKey ] ) == true ) {
 						// instantiate the linked Bean
 						var bean = createObject( "component", property[ "json:cfc" ] ).init();
@@ -167,8 +165,7 @@ component {
 			// try to find that key in the Bean properties
 			for ( var property in properties ) {
 				// if found
-				if
-				(
+				if (
 					(
 						property.keyExists( "json:column" )
 						&& len( property[ "json:column" ] )
@@ -176,8 +173,7 @@ component {
 					)
 					||
 					( property.name == mementoKey )
-				)
-				{
+				){
 					// If the payload has a value then simply assign it to the property
 					if ( memento.keyExists( mementoKey ) && isArray( memento[ mementoKey ] ) == true ) {
 						// loop through the payload array for that property
@@ -228,32 +224,32 @@ component {
 				out[ field ] = fieldvalue;
 				if ( fieldName.keyExists( "json:type" ) ) {
 					switch ( fieldName[ "json:type" ] ) {
-					case "string":
-						out[ field ] = chr( 2 ) & out[ field ];
-						break;
-					case "number":
-						if ( isBoolean( out[ field ] ) ) {
-							out[ field ] ? 1 : 0;
-						} else {
+						case "string":
+							out[ field ] = chr( 2 ) & out[ field ];
+							break;
+						case "number":
+							if ( isBoolean( out[ field ] ) ) {
+								out[ field ] ? 1 : 0;
+							} else {
+								if ( out[ field ] == "" ) {
+									out[ field ] = javacast( "null", 0 );
+								} else {
+									out[ field ] = out[ field ];
+								}
+							}
+							break;
+						case "date":
+							if ( isDate( out[ field ] ) || isNumericDate( out[ field ] ) ) {
+								out[ field ] = getIsoTimeString( out[ field ] );
+							}
+							break;
+						case "boolean":
 							if ( out[ field ] == "" ) {
 								out[ field ] = javacast( "null", 0 );
 							} else {
-								out[ field ] = out[ field ];
+								out[ field ] = out[ field ] ? true : false;
 							}
-						}
-						break;
-					case "date":
-						if ( isDate( out[ field ] ) || isNumericDate( out[ field ] ) ) {
-							out[ field ] = getIsoTimeString( out[ field ] );
-						}
-						break;
-					case "boolean":
-						if ( out[ field ] == "" ) {
-							out[ field ] = javacast( "null", 0 );
-						} else {
-							out[ field ] = out[ field ] ? true : false;
-						}
-						break;
+							break;
 					}
 				}
 			}
@@ -382,18 +378,18 @@ component {
 	private string function getPropertyJavaCastType( required string type ) {
 		var javaType = "";
 		switch ( type ) {
-		case "boolean":
-			javaType = "boolean";
-			break;
-		case "string": case "date":
-			javaType = "string";
-			break;
-		case "number":
-			javaType = "bigdecimal";
-			break;
-		default:
-			javaType = "string";
-			break;
+			case "boolean":
+				javaType = "boolean";
+				break;
+			case "string": case "date":
+				javaType = "string";
+				break;
+			case "number":
+				javaType = "bigdecimal";
+				break;
+			default:
+				javaType = "string";
+				break;
 		}
 		return javaType;
 	}
@@ -414,15 +410,15 @@ component {
 		for ( var property in properties ) {
 			if ( structKeyExists( property, "json:type" ) ) {
 				switch ( property[ "json:type" ] ) {
-				case "struct":
-					categorizedProperties[ "struct" ].append( property );
-					break;
-				case "array":
-					categorizedProperties[ "array" ].append( property );
-					break;
-				default:
-					categorizedProperties[ "simple" ].append( property );
-					break;
+					case "struct":
+						categorizedProperties[ "struct" ].append( property );
+						break;
+					case "array":
+						categorizedProperties[ "array" ].append( property );
+						break;
+					default:
+						categorizedProperties[ "simple" ].append( property );
+						break;
 				}
 			} else {
 			/*
