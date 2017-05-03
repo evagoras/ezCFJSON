@@ -90,7 +90,10 @@ writedump( user );
 ```
 <img src="https://github.com/evagoras/ezCFJSON/blob/master/populated_bean.png" alt="Populated Bean" width="500">
 
-### 2. toJson([everything=true])
+### 2. fromJson([strictMapping=true])
+This is the same as calling the `populate()` method, passing a JSON string.
+
+### 3. toJson([strictMapping=true])
 Serializes the Bean (and its nested relationships) to a JSON string. By default it will serialize all the properties, including the nested ones, unless you pass a `false` argument to the function which will then serialize only the populated ones.
 
 This example populates and serializes from a JSON string:
@@ -132,7 +135,7 @@ Notice that we asked to have only the populated fields serialized. This is the r
 {"ID":233,"firstName":"Evagoras","familyName":"Charalambous","distributorID":12345,"active":true,"billingAddress":{"organisation":"my company","address1":"Street 1","telephone":"12345"},"shippingAddress":{"address2":"Street 2","city":"London"},"items":[{"id":1,"quantity":3,"unitCost":4.56},{"id":2,"size":4,"unitCost":10.0}]}
 ```
 
-### 3. toNative([everything=true])
+### 4. toNative([strictMapping=true])
 Returns a CF Struct of the Bean and its nested relatiosnhips. By default it will add all the properties, including the nested ones, unless you pass a `false` argument to the function which will then add only the populated ones.
 ```
 struct = {
