@@ -1,5 +1,5 @@
 <cfscript>
-param name="url.everything" default=true type="boolean";
+param name="url.strictmapping" default=true type="boolean";
 param name="url.populate" default="struct" type="string";
 
 cfinclude( template="data.cfm" );
@@ -20,5 +20,5 @@ switch ( url.populate) {
 		break;
 }
 
-writeoutput( user.toJson( everything = url.everything ) );
+writeoutput( user.toJson( strictmapping = url.strictmapping ) );
 </cfscript>

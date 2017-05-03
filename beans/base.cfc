@@ -12,10 +12,10 @@ component {
 
 	/**
 	 * @hint Return a JSON string of the populated bean
-	 * @everything Return all the Bean fields or just the populated ones
+	 * @strictMapping Return all the Bean fields or just the populated ones
 	 */
-	public string function toJson( boolean everything = true ) {
-		var payload = this.serialize( everything );
+	public string function toJson( boolean strictMapping = true ) {
+		var payload = this.serialize( strictMapping );
 		var jsonString = serializeJson( payload );
 		return removeSTX( jsonString );
 	}
@@ -23,10 +23,23 @@ component {
 
 	/**
 	 * @hint Return a CF Struct Native of the populated bean
-	 * @everything Return all the Bean fields or just the populated ones
+	 * @strictMapping Return all the Bean fields or just the populated ones
 	 */
-	public struct function toNative( boolean everything = true ) {
-		return deserializeJson( toJson( everything ) );
+	public struct function toNative( boolean strictMapping = true ) {
+		return deserializeJson( toJson( strictMapping ) );
+	}
+
+
+	/**
+	 * @hint Populates from a JSON string
+	 * @memento The data to populate with
+	 */
+	public void function fromJson( required string memento ) {
+		var data = {};
+		if ( isJson( memento ) ) {
+			data = deserializeJson( memento );
+		}
+		populate( data );
 	}
 
 
@@ -54,12 +67,12 @@ component {
 
 	/**
 	 * @hint Returns the Populated Bean as a STRUCT
-	 * @everything Return all the Bean fields or just the populated ones
+	 * @strictMapping Return all the Bean fields or just the populated ones
 	 */
-	public struct function serialize( required boolean everything ) {
-		var s = serializeSimpleProperties( everything );
-		s.putAll( serializeOneToOneProperties( everything ) );
-		s.putAll( serializeOneToManyProperties( everything ) );
+	public struct function serialize( required boolean strictMapping ) {
+		var s = serializeSimpleProperties( strictMapping );
+		s.putAll( serializeOneToOneProperties( strictMapping ) );
+		s.putAll( serializeOneToManyProperties( strictMapping ) );
 		return s;
 	}
 
@@ -204,12 +217,12 @@ component {
 	/**
 	 * @hint Serializes the simple properties of the Bean
 	 */
-	private struct function serializeSimpleProperties( required boolean everything ) {
+	private struct function serializeSimpleProperties( required boolean strictMapping ) {
 		var out = createObject( "java", "java.util.LinkedHashMap").init();
 		var properties = variables.categorizedProperties[ "simple" ];
 		for ( var fieldName in properties ) {
 			// exclude any fields that were not populated
-			if ( everything == false && variables.populatedProperties.find( fieldName.name ) == 0 ) {
+			if ( strictMapping == false && variables.populatedProperties.find( fieldName.name ) == 0 ) {
 				continue;
 			}
 			// exclude any fields that are marked as non serializable
@@ -261,13 +274,13 @@ component {
 	/**
 	 * @hint Serializes mapped one-to-one Bean properties
 	 */
-	private any function serializeOneToOneProperties( required boolean everything ) {
+	private any function serializeOneToOneProperties( required boolean strictMapping ) {
 		var out = createObject( "java", "java.util.LinkedHashMap").init();
 		var properties = variables.categorizedProperties[ "struct" ];
 		// var properties = returnPropertiesByType( "struct" );
 		for ( var property in properties ) {
 			// exclude any fields that were not populated
-			if ( everything == false && variables.populatedProperties.find( property.name ) == 0 ) {
+			if ( strictMapping == false && variables.populatedProperties.find( property.name ) == 0 ) {
 				continue;
 			}
 			// exclude any fields that are marked as non serializable
@@ -275,7 +288,7 @@ component {
 				continue;
 			}
 			if ( variables.keyExists( property.name ) ) {
-				out[ property.name ] = variables[ property.name ].serialize( everything );
+				out[ property.name ] = variables[ property.name ].serialize( strictMapping );
 			} else {
 				out[ property.name ] = javacast( "null", 0 );
 			}
@@ -284,13 +297,13 @@ component {
 	}
 
 
-	private any function serializeOneToManyProperties( required boolean everything ) {
+	private any function serializeOneToManyProperties( required boolean strictMapping ) {
 		var out = createObject( "java", "java.util.LinkedHashMap").init();
 		var properties = variables.categorizedProperties[ "array" ];
 		// var properties = returnPropertiesByType( "array" );
 		for ( var property in properties ) {
 			// exclude any fields that were not populated
-			if ( everything == false && variables.populatedProperties.find( property.name ) == 0 ) {
+			if ( strictMapping == false && variables.populatedProperties.find( property.name ) == 0 ) {
 				continue;
 			}
 			// exclude any fields that are marked as non serializable
@@ -300,7 +313,7 @@ component {
 			if ( variables.keyExists( property.name ) ) {
 				out[ property.name ] = [];
 				for ( var propertyArray in variables[ property.name ] ) {
-					out[ property.name ].append( propertyArray.serialize( everything ) );
+					out[ property.name ].append( propertyArray.serialize( strictMapping ) );
 				}
 			} else {
 				out[ property.name ] = javacast( "null", 0 );
