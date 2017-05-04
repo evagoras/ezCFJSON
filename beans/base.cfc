@@ -172,11 +172,11 @@ component {
 	private void function populateOneToManyProperties( required struct memento ) {
 		// get all the one-to-many properties of this Bean
 		var properties = variables.categorizedProperties[ "array" ];
-		var bean = "";
-		var injectedBeans = [];
+
 		for ( var mementoKey in memento ) {
 			// try to find that key in the Bean properties
 			for ( var property in properties ) {
+				var injectedBeans = [];
 				// if found
 				if (
 					(
@@ -192,7 +192,7 @@ component {
 						// loop through the payload array for that property
 						for ( var mementoItem in memento[ mementoKey ] ) {
 							// instantiate the linked Bean
-							bean = createObject( "component", property[ "json:cfc" ] ).init();
+							var bean = createObject( "component", property[ "json:cfc" ] ).init();
 							// populate the Bean with the payload specific part
 							bean.populate( mementoItem );
 							// add the linked populated Bean to this Bean
