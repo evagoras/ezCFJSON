@@ -128,7 +128,7 @@ jsonString = '{
 }';
 user = new user();
 user.populate( jsonString );
-user.toJson( everything = false );
+user.toJson( strictMapping = false );
 ```
 Notice that we asked to have only the populated fields serialized. This is the result:
 ```
@@ -169,7 +169,7 @@ struct = {
 };
 user = new user();
 user.populate( struct );
-nativeStruct = user.toNative( everything = false );
+nativeStruct = user.toNative( strictMapping = false );
 
 writedump( nativeStruct );
 ```
